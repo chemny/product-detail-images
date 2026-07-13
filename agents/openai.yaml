@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Detail Images"
+  short_description: "Plan and generate complete ecommerce detail images"
+  default_prompt: "Use $product-detail-images to turn my uploaded product photos into a complete ecommerce product detail image set."
