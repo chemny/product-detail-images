@@ -38,6 +38,7 @@ Skill 会先确认主商品与可用事实，再建立完整的商品成交叙�
 | 能力 | 它能帮你做什么 |
 | --- | --- |
 | 商品与事实分析 | 区分肉眼可见的商品事实、用户提供的信息和不可凭空编造的客观主张 |
+| 品类路由与适配 | 自动识别商品的主要决策类型；结构耐用品、包装消费品和数码电子会分别加载对应的结构、包装标签、感官表达、功能与证据规则 |
 | 完整页面规划 | 覆盖商品认知、核心价值、优势表达、证据、使用想象与购买决策 |
 | 稳定的图片数量规则 | 根据叙事深度与素材丰富度选择 6、8 或 10 张，避免随意变化 |
 | 七种视觉方向 | 同时比较七种适配商品的视觉风格，并推荐一套统一方向 |
@@ -48,7 +49,9 @@ Skill 会先确认主商品与可用事实，再建立完整的商品成交叙�
 
 ## 平台兼容性
 
-已通过 Codex Skill 格式校验。Skill 使用可移植的 Markdown 指令和相对路径；Claude Code 与 OpenClaw 已完成静态检查，但尚未进行真实运行测试。
+已通过 Codex Skill 格式校验，并在 macOS 的 Codex 中完成测试。Skill 核心使用可移植的 Markdown 指令和相对路径；Claude Code、OpenClaw、Linux 与 Windows 已完成静态检查，但尚未进行真实运行测试。
+
+完整生图需要宿主 Agent 提供图片生成工具。可选的结构化方案校验器需要 Python 3.9 或更高版本；Windows 使用 `py -3 scripts\validate_product_brief.py <brief.json>`，macOS 与 Linux 使用 `python3 scripts/validate_product_brief.py <brief.json>`。
 
 ## 安装
 
@@ -82,13 +85,17 @@ Skill 会在正式生成前进行一次集中确认，不会把常规设计细�
 ```
 
 ```text
+请用 $product-detail-images 为这款数码产品规划完整详情页。先盘点外观、接口、功能、配件、参数与兼容性证据，展示七种风格，并在我确认方案后生成。
+```
+
+```text
 请用 $product-detail-images 复查这套已经生成的商品详情图，只指出失败的维度，并给出针对性的提示词修改方案。
 ```
 
 ## 工作流程
 
 1. 锁定主商品，排除容易混淆的陪衬商品。
-2. 分析可见特征、素材丰富度、证据与客观事实边界。
+2. 分析可见特征、素材丰富度、证据与客观事实边界，并自动路由到适用的品类规则。
 3. 建立完整成交叙事，选择最小但完整的 6、8 或 10 张页面骨架。
 4. 比较七种视觉风格，推荐一套方向，并规划每页的图文关系。
 5. 集中确认一次，再从头图开始分批生成。
@@ -111,6 +118,10 @@ product-detail-images/
 │   └── product-detail-series-preview.png
 ├── references/
 │   ├── background-system.md
+│   ├── category-routing.md
+│   ├── packaged-consumable-adapter.md
+│   ├── electronics-adapter.md
+│   ├── structured-durable-adapter.md
 │   ├── poster-sequence.md
 │   ├── style-packs.md
 │   └── ...

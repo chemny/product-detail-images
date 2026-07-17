@@ -15,6 +15,7 @@ REQUIRED_TOP_LEVEL = [
     "material_richness",
     "image_quality",
     "source_environment",
+    "category_route",
     "brand",
     "product",
     "selling_points",
@@ -110,6 +111,46 @@ def main() -> int:
 
     if not isinstance(data.get("needs_user_confirmation", []), list):
         errors.append("needs_user_confirmation must be a list")
+
+    category_route = data.get("category_route", {})
+    if not isinstance(category_route, dict):
+        errors.append("category_route must be an object")
+    else:
+        allowed_families = {
+            "human_worn",
+            "structured_durable",
+            "packaged_consumable",
+            "electronics_equipment",
+        }
+        family = category_route.get("family")
+        if family not in allowed_families:
+            errors.append(
+                "category_route.family must be human_worn, structured_durable, packaged_consumable, or electronics_equipment"
+            )
+        if not category_route.get("primary_adapter"):
+            errors.append("category_route.primary_adapter is required")
+        elif family == "structured_durable" and category_route.get("primary_adapter") != "structured-durable-adapter":
+            errors.append(
+                "structured_durable must use primary_adapter=structured-durable-adapter"
+            )
+        elif family == "packaged_consumable" and category_route.get("primary_adapter") != "packaged-consumable-adapter":
+            errors.append(
+                "packaged_consumable must use primary_adapter=packaged-consumable-adapter"
+            )
+        elif family == "electronics_equipment" and category_route.get("primary_adapter") != "electronics-adapter":
+            errors.append(
+                "electronics_equipment must use primary_adapter=electronics-adapter"
+            )
+        if family == "packaged_consumable" and category_route.get("consumable_profile") not in {
+            "edible",
+            "topical_care",
+            "ordinary_packaged",
+        }:
+            errors.append(
+                "packaged_consumable category_route.consumable_profile must be edible, topical_care, or ordinary_packaged"
+            )
+        if not category_route.get("buyer_decision_risk"):
+            errors.append("category_route.buyer_decision_risk is required")
 
     commerce_story = data.get("commerce_story", {})
     if not isinstance(commerce_story, dict):

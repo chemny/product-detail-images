@@ -38,6 +38,7 @@ The Skill first identifies the primary product and available evidence, then buil
 | Capability | What it helps you do |
 | --- | --- |
 | Product and evidence analysis | Separate visible product facts from unsupported claims and creative expression |
+| Category routing and adapters | Route the main decision type automatically; structured durables, packaged consumables, and electronics load specialized structure, packaging, sensory, function, and evidence rules |
 | Complete page planning | Cover recognition, core value, advantages, proof, usage imagination, and purchase decisions |
 | Stable image-count logic | Use 6, 8, or 10 images according to story depth and source richness instead of arbitrary output counts |
 | Seven style directions | Compare seven product-specific visual styles and select one coherent series direction |
@@ -48,7 +49,9 @@ The Skill first identifies the primary product and available evidence, then buil
 
 ## Platform Compatibility
 
-Validated against the Codex Skill schema. The Skill uses portable Markdown instructions and relative files; Claude Code and OpenClaw have been statically reviewed but not runtime-tested.
+Validated against the Codex Skill schema and tested with Codex on macOS. The core Skill uses portable Markdown instructions and relative files. Claude Code, OpenClaw, Linux, and Windows have been statically reviewed but not runtime-tested.
+
+Full image generation requires the host Agent to provide an image-generation tool. The optional structured-brief validator requires Python 3.9 or later. Run it with `py -3 scripts\validate_product_brief.py <brief.json>` on Windows, or `python3 scripts/validate_product_brief.py <brief.json>` on macOS and Linux.
 
 ## Install
 
@@ -82,13 +85,17 @@ Use $product-detail-images for these three product photos. The handbag is the pr
 ```
 
 ```text
+Use $product-detail-images to plan a complete detail-image series for this electronic product. Inventory appearance, interfaces, functions, components, specifications, and compatibility evidence before showing all seven styles and asking for one consolidated confirmation.
+```
+
+```text
 Review this generated product-detail series with $product-detail-images. Identify only the failed dimensions and propose targeted prompt revisions.
 ```
 
 ## How It Works
 
 1. Lock the primary product and exclude distracting products.
-2. Analyze visible features, source richness, evidence, and claim boundaries.
+2. Analyze visible features, source richness, evidence, and claim boundaries, then route the product to the applicable category rules.
 3. Build a complete commerce story and select the smallest complete 6-, 8-, or 10-image skeleton.
 4. Compare seven visual styles, recommend one, and map each page's image-text relationship.
 5. Confirm the plan once, then generate the hero and later pages in controlled batches.
@@ -111,6 +118,10 @@ product-detail-images/
 │   └── product-detail-series-preview.png
 ├── references/
 │   ├── background-system.md
+│   ├── category-routing.md
+│   ├── packaged-consumable-adapter.md
+│   ├── electronics-adapter.md
+│   ├── structured-durable-adapter.md
 │   ├── poster-sequence.md
 │   ├── style-packs.md
 │   └── ...

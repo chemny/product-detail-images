@@ -38,6 +38,22 @@ Do not reuse the examples mechanically. Record the headline form in the page pla
 
 Creative aesthetic language may be bold. Exact composition, data, certification, review, performance, medical, safety, comparison, size, and brand-history claims require support.
 
+## Copy Density And Source Transformation
+
+Assign density page by page instead of forcing the whole series into one text volume:
+
+- `low`: one headline plus one proof line; best for hero, emotional peak, or visually self-evident pages;
+- `medium`: headline, proof line, and one or two short explanatory sentences or labels; best for a key benefit, scene, color, or visible detail;
+- `high`: headline, proof line, two to four concise explanatory sentences, labels, or supported data; best for specifications, comparison, material explanation, guide, or decision support when source information is rich.
+
+Density follows the commerce job and source richness, not visual busyness alone. A complete detail page needs rhythm across low, medium, and high density; it should not become either a slogan gallery or a wall of text.
+
+Transform supplied content through this chain:
+
+`source statement -> visible or supported feature -> customer meaning -> headline -> supporting explanation`
+
+Preserve useful distinctions, proof, usage information, and decision support from source material. Compress repetition and weak filler, but do not erase substantive content merely to make the layout cleaner. When support is missing, use aesthetic or experiential language rather than manufacturing facts.
+
 ## Layout Copy Rules
 
 - Keep the main headline to no more than two lines.
@@ -62,7 +78,9 @@ Describe the actual environment, materials, foreground and background elements, 
 
 ### 3. Product restoration
 
-State the source invariants: silhouette, color, pattern, closure, logo, visible text, proportions, surface, and relevant structure. The uploaded image is the product reference, not an automatic background reference.
+State only the clear, purchase-relevant identity anchors of the sold product: category, main color, major silhouette, dominant pattern, key closure, visible brand text when relevant, and major structure. Describe source ambiguity without forcing one interpretation. The uploaded image is the product reference, not an automatic background reference.
+
+Do not require pixel-level restoration. Supporting styling elements may vary naturally. Do not forbid metal, buckles, belts, bags, shoes, jewelry, or another ordinary detail merely because a previous case produced it badly. Add a constraint only when the current source and sold product make that difference materially misleading.
 
 ### 4. Composition and camera
 
@@ -72,13 +90,15 @@ State subject position and approximate scale, framing type, camera distance, pos
 
 List the final Chinese headline, English support line when used, proof line, and up to three labels. Do not send placeholders.
 
+Treat this list as closed. The image model must not add new body copy unless the approved page plan contains it. Never let generated filler introduce an unsupported material, comfort, fit, performance, efficacy, comparison, popularity, or user-experience judgment. If more explanation is commercially necessary, write and approve it before generation.
+
 ### 6. Layout blueprint
 
 State logo zone, subject zone, text zone, headline width and line count, alignment axis, Chinese-English relative size, font categories, color contrast, spacing, and low-texture area behind text.
 
 ### 7. Page-specific negative constraints
 
-Use only constraints relevant to likely failures on the page. Examples: wrong SKU color or garment structure for apparel; wrong handle, closure, or compartment for bags; invented ingredient or package text for food; wrong ports, controls, or specifications for electronics; incorrect scale, assembly, or room contact for home goods. Add anatomy, crop, text, CTA, or background constraints only when relevant.
+Use only constraints relevant to likely material failures on the page. Examples: wrong SKU color or major garment structure for apparel; wrong handle, closure, or compartment when the bag itself is sold; invented ingredient or package text for food; wrong ports, controls, or specifications for electronics; incorrect scale, assembly, or room contact for home goods. Add anatomy, crop, text, CTA, or background constraints only when relevant.
 
 Do not paste workflow rules, evidence schemas, scoring logic, risk essays, or generic 20-30-item negative lists into the image prompt.
 
@@ -91,5 +111,8 @@ Before generation, confirm that the prompt makes these questions answerable:
 - How does the product relate to the scene or concept?
 - Where are the subject and text?
 - What exact words appear?
-- What product details cannot change?
-- Which few failures are most likely on this page?
+- Which clear sold-product identity features cannot materially change?
+- Which ambiguous or supporting details may vary?
+- Which few material failures are most likely on this page?
+- Does the copy density match the page's commerce job and the available source depth?
+- Is every visible sentence part of the approved closed copy list?

@@ -36,4 +36,4 @@ Do not add unspecified field names or placeholders such as:
 - 示例 / Example
 - 待补充 / Placeholder, unless the approved design-proposal plan explicitly asks for it
 
-Any unrequested interface label or numbering triggers revision.
+Revise an unrequested interface label or numbering only when it is prominent, misleading, or materially harms reading. Ignore inconsequential decorative microtext that does not change the commerce message.

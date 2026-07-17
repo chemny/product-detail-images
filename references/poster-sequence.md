@@ -109,12 +109,13 @@ A generic portrait, abstract background, unsupported data dashboard, or mood-onl
 The final decision page must add information not already delivered by the SKU and styling pages. Prefer:
 
 - confirmed specification or product information;
-- selection matrix or buyer-fit logic;
+- product information index or visible design overview;
 - package, care, usage, compatibility, or caution guidance;
-- visible-feature checklist plus clearly identified missing information;
+- visible-feature map that explains the product rather than testing the buyer;
 - buyer concern summary.
 
 Do not use the final page merely to repeat color names, occasion labels, or earlier selling points.
+Do not turn the final page into a preference survey. Avoid checkbox or questionnaire copy such as `你是否`, `你喜欢`, `你偏爱`, or `你在意`. When objective specifications are unavailable, summarize the product's visible design, structure, use, or styling information instead of interrogating the buyer.
 
 ## Replacement Rule
 

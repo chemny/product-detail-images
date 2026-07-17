@@ -9,6 +9,9 @@ For every page specify:
 - subject region and approximate frame share;
 - visual carrier: model, product, detail, concept, collage, card, diagram, or table;
 - camera distance and subject state;
+- scene mode: literal, reinterpret, or conceptual;
+- 2-3 recognizable scene cues when copy names a concrete place or occasion;
+- model action, expression, gaze, and camera angle when a person appears;
 - text region and low-texture background area;
 - headline width, line count, and alignment;
 - Chinese-English size relationship;
@@ -75,7 +78,7 @@ Use these combinations when one page needs several related modules while retaini
 - **Visual peak composition:** one dominant product-advantage interaction using controlled scale, motion, or concept elements, with restrained proof text.
 - **Evidence peak composition:** one decisive demonstration, comparison, capacity proof, structure view, or use relationship supported by concise annotations.
 - **Information peak composition:** one clear mechanism, specification hierarchy, compatibility map, component system, or decision model with disciplined typography.
-- **Buyer decision checklist:** visible facts, confirmed information, buyer-fit logic, and missing-information note arranged as a clear final decision tool; do not repeat the earlier SKU grid.
+- **Product information index:** one complete product view plus a disciplined map of visible design, structure, use, styling, or confirmed facts. Explain the product directly; do not use preference checkboxes or survey-like questions.
 
 One page may contain several related modules, but it must retain one primary commerce job and one primary visual center.
 
@@ -85,5 +88,7 @@ One page may contain several related modules, but it must retain one primary com
 - Larger sets may repeat only with a different visual carrier and blueprint.
 - Use at least four visual carriers in a complete six-image set.
 - Adjacent pages should differ in subject position, distance, state, and information density.
+- Before generation, adjust adjacent pages that repeat the same setting, action, expression/gaze, distance, and angle so at least two dimensions differ. This is a soft storyboard check, not a post-generation pixel-matching rule.
+- When copy names a concrete scene, show recognizable environmental evidence. If the intended image is abstract, rewrite the copy as conceptual rather than pretending the abstract space is a literal city, cafe, home, office, or outdoor setting.
 - Keep one typography grid and brand world while varying page space and composition.
 - If the prompt contains only an archetype name and adjectives, the blueprint is incomplete.

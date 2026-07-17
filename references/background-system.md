@@ -16,7 +16,7 @@ Choose exactly one primary mode for the set and record the reason.
 
 Use by default when the environment is incidental to the product.
 
-- Extract product-relevant invariants and design a new commercial environment from the product category, buyer, brand position, page role, and selected visual system.
+- Extract clear sold-product identity anchors and design a new commercial environment from the product category, buyer, brand position, page role, and selected visual system.
 - Do not carry over incidental architecture, surfaces, furniture, landscape, lighting, props, clutter, or spatial geometry.
 
 ### Reinterpret
