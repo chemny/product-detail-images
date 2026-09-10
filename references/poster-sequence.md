@@ -19,11 +19,19 @@ Before generation, name where each role appears. If any role is absent, the plan
 
 Automatically choose only 6, 8, or 10 images.
 
-- **6 images — minimum complete set:** use when one core value and a small number of visible advantages can be expressed without crowding.
-- **8 images — default complete sales set:** use for most apparel, beauty, home, food, lifestyle, and consumer products; allows advantages, proof, imagination, and decision support to breathe.
-- **10 images — rich commercial set:** use when the product has multiple SKUs, scenes, advantages, parameters, brand assets, trust evidence, or a longer purchase-decision path.
+- **6 images — default complete set:** start here for every automatically planned detail page. Use related modules inside each page to cover the full commerce story without filler.
+- **8 images — expanded sales set:** use only when at least two additional supported, non-mergeable content dimensions remain after a strong six-page plan.
+- **10 images — rich commercial set:** use only when at least two further supported, non-mergeable dimensions remain after a strong eight-page plan, typically because the product has deeper specifications, structure, variants, trust evidence, or a longer decision path.
 
-Choose the smallest tier that passes mandatory commerce coverage without overcrowding or generic filler. Material richness controls proof depth and may justify expansion. Image clarity affects restoration precision, never count.
+Always draft six pages first. Choose the smallest tier that passes mandatory commerce coverage without overcrowding or generic filler. Material richness controls proof depth and may justify expansion. Image clarity affects restoration precision, never count.
+
+The following do not qualify as expansion dimensions:
+
+- a new background with the same product state;
+- a new pose with the same silhouette or use information;
+- synonymous headlines or emotional adjectives;
+- a repeated overall product view without new evidence;
+- a summary page that only restates earlier color, scene, or selling-point content.
 
 Do not automatically generate four images. If the user explicitly requests four, label the deliverable `compact_showcase`, explain the compressed or omitted decision content, and do not present it as the default complete-detail-page tier.
 
@@ -41,7 +49,7 @@ Five candidate selling points remain useful inputs, but do not treat them as fiv
 
 ## Stable Skeletons
 
-### 6 Images — Minimum Complete Detail Page
+### 6 Images — Default Complete Detail Page
 
 1. **Positioning Overview:** product recognition, core value, and 2-3 short advantage labels.
 2. **Buyer Scene Or Usage Imagination:** show the need, occasion, styling, or use relationship.
@@ -50,7 +58,7 @@ Five candidate selling points remain useful inputs, but do not treat them as fiv
 5. **Second Advantage / Dynamic / Combination:** deepen another reason to choose or show value in action.
 6. **Purchase Decision:** color, SKU, specification, audience, pairing, care, package, trust, or confirmed-information summary.
 
-### 8 Images — Default Complete Sales Narrative
+### 8 Images — Expanded Complete Sales Narrative
 
 1. Hero positioning and core value.
 2. Buyer need, lifestyle, or use scene.
@@ -81,6 +89,10 @@ Designate at least one page between 3-7 as the `series_peak_page`.
 ## Page Composition Principle
 
 Each page has one primary commerce job and one primary visual center, but may contain several related modules. A hero may include a value headline and three advantage labels; a detail page may include one main detail and two supporting crops; a decision page may combine color, occasion, and pairing guidance.
+
+Each page should normally combine one primary content dimension with one related supporting dimension. Examples include silhouette plus dynamic proof, visible detail plus customer meaning, color plus styling guidance, or use scene plus audience fit. The supporting dimension must deepen the same commerce job rather than add an unrelated block.
+
+Before keeping a page, write one sentence naming the new information it contributes. If that sentence repeats an earlier page or can be merged without loss, merge or remove the page.
 
 Reject both extremes:
 
@@ -145,7 +157,10 @@ For complete sets:
 
 ## Format Defaults
 
-- Marketplace detail sections: 9:16.
-- Xiaohongshu cards: 3:4 or 4:5 with lower text density.
-- Douyin shop or cover: 9:16 with stronger first-message hierarchy.
-- Single long detail image: only when explicitly requested.
+Read `platform-format-routing.md` before assigning a canvas. Format follows asset type first and platform second.
+
+- Generic ecommerce product-gallery or modular detail image when the platform is unknown: default to 3:4 at 750x1000.
+- Xiaohongshu product images: use 1:1 or 3:4; default to 3:4 at 750x1000 for apparel and lifestyle products unless the user requests square.
+- Douyin ecommerce 3:4 main images: default to 3:4 at 750x1000 unless the current official publishing surface specifies another accepted size.
+- Use 9:16 only for an explicitly requested short-video cover, vertical ad, immersive poster, or another surface that calls for it. Do not describe 9:16 as the generic ecommerce-detail standard.
+- Single long detail image: only when explicitly requested and only within the selected platform's current width, height, file-size, and slicing limits.

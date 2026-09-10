@@ -42,7 +42,7 @@ Exact battery life, power, speed, charging time, protocol, waterproof rating, re
 
 ## 4. Complete Electronics Narrative
 
-Use the common count tiers. For an eight-image default set, prefer:
+Use the common count tiers. Start with the six-image default. When additional supported electronics dimensions justify an eight-image expanded set, prefer:
 
 1. **Positioning:** product recognition, core outcome, and 2-3 short supported advantage labels.
 2. **Buyer problem or use scene:** show the concrete work, entertainment, mobility, installation, or ownership context.
@@ -53,7 +53,7 @@ Use the common count tiers. For an eight-image default set, prefer:
 7. **Specification, compatibility, or model choice:** confirmed parameters and decision guidance in a disciplined information layout.
 8. **Package, usage, fit, support, or final decision:** new purchase information, not a slogan recap or buyer survey.
 
-Compress the same roles into six images for simple products. Expand function proof, comparison, component systems, or decision support to ten images for complex devices and kits.
+For the six-image default, merge related function, interaction, and proof modules without losing mandatory decision coverage. Expand to ten images only when further supported function proof, comparison, component systems, or decision support remain after a strong eight-page plan.
 
 ## 5. Electronics Visual Carriers
 

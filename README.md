@@ -41,15 +41,17 @@ The Skill first identifies the primary product and available evidence, then buil
 | Category routing and adapters | Route the main decision type automatically; structured durables, packaged consumables, and electronics load specialized structure, packaging, sensory, function, and evidence rules |
 | Complete page planning | Cover recognition, core value, advantages, proof, usage imagination, and purchase decisions |
 | Stable image-count logic | Use 6, 8, or 10 images according to story depth and source richness instead of arbitrary output counts |
+| Platform and format routing | Distinguish product images, detail modules, social cards, ads, and video covers before choosing a canvas |
 | Seven style directions | Compare seven product-specific visual styles and select one coherent series direction |
 | Page-level copywriting | Give every image useful commercial copy without CTA buttons or empty decorative pages |
 | Layout and typography control | Vary composition, camera distance, pose, product scale, and text hierarchy while preserving series consistency |
 | Background reconstruction | Treat source images as product evidence and rebuild a background world that fits the product |
 | Generation quality control | Review product identity, anatomy, crops, text, claims, page meaning, and whole-series rhythm |
+| Mechanical dimension validation | Check raw aspect ratios and final pixel dimensions without stretching the product or layout |
 
 ## Platform Compatibility
 
-Validated against the Codex Skill schema and tested with Codex on macOS. The core Skill uses portable Markdown instructions and relative files. Claude Code, OpenClaw, Linux, and Windows have been statically reviewed but not runtime-tested.
+Validated against the Codex Skill schema and tested with Codex on macOS. The core Skill uses portable Markdown instructions and relative files. Claude Code, OpenClaw, Linux, and Windows compatibility has been statically reviewed; the helper scripts require Python 3.9 or later, while full image generation depends on the host Agent.
 
 Full image generation requires the host Agent to provide an image-generation tool. The optional structured-brief validator requires Python 3.9 or later. Run it with `py -3 scripts\validate_product_brief.py <brief.json>` on Windows, or `python3 scripts/validate_product_brief.py <brief.json>` on macOS and Linux.
 
@@ -99,7 +101,7 @@ Review this generated product-detail series with $product-detail-images. Identif
 3. Build a complete commerce story and select the smallest complete 6-, 8-, or 10-image skeleton.
 4. Compare seven visual styles, recommend one, and map each page's image-text relationship.
 5. Confirm the plan once, then generate the hero and later pages in controlled batches.
-6. Inspect delivery quality and creative quality, revising only the failed dimension.
+6. Inspect raw aspect ratios and final pixel dimensions, then review delivery quality and creative quality, revising only the failed dimension.
 
 ## Repository Structure
 
@@ -122,11 +124,13 @@ product-detail-images/
 │   ├── packaged-consumable-adapter.md
 │   ├── electronics-adapter.md
 │   ├── structured-durable-adapter.md
+│   ├── platform-format-routing.md
 │   ├── poster-sequence.md
 │   ├── style-packs.md
 │   └── ...
 └── scripts/
-    └── validate_product_brief.py
+    ├── validate_product_brief.py
+    └── validate_image_dimensions.py
 ```
 
 ## Requirements
@@ -134,7 +138,7 @@ product-detail-images/
 - An Agent client that can load local Skills
 - An image-generation capability for final image production
 - Product images or a sufficiently specific product description
-- Python 3 only when using the optional structured-brief validator
+- Python 3.9 or later when using the optional structured-brief or image-dimension validators
 
 The planning workflow remains useful without the optional validator. Image-generation availability and behavior depend on the current Agent client.
 

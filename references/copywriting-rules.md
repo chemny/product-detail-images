@@ -70,7 +70,7 @@ Do not condense away any of these sections before calling image generation.
 
 ### 1. Page objective
 
-State the purchase or emotional job and the single memorable visual idea.
+Begin with the approved canvas in both ratio and pixel form, then state the purchase or emotional job and the single memorable visual idea. Default first sentence: `Canvas lock: 3:4 portrait; target 750x1000 px.`
 
 ### 2. Visual scene
 
@@ -94,7 +94,7 @@ Treat this list as closed. The image model must not add new body copy unless the
 
 ### 6. Layout blueprint
 
-State logo zone, subject zone, text zone, headline width and line count, alignment axis, Chinese-English relative size, font categories, color contrast, spacing, and low-texture area behind text.
+Repeat the approved ratio and pixel target, then state logo zone, subject zone, text zone, headline width and line count, alignment axis, Chinese-English relative size, font categories, color contrast, spacing, and low-texture area behind text.
 
 ### 7. Page-specific negative constraints
 
@@ -116,3 +116,4 @@ Before generation, confirm that the prompt makes these questions answerable:
 - Which few material failures are most likely on this page?
 - Does the copy density match the page's commerce job and the available source depth?
 - Is every visible sentence part of the approved closed copy list?
+- Are the approved ratio and pixel target stated in both field 1 and field 6?

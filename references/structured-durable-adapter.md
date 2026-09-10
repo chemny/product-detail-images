@@ -51,7 +51,7 @@ Exact dimensions, capacity, load, weight, material, resistance, durability, comf
 
 ## 5. Complete Structured-Durable Narrative
 
-Use the common count tiers. For an eight-image default set, prefer:
+Use the common count tiers. Start with the six-image default. When additional supported structure or use dimensions justify an eight-image expanded set, prefer:
 
 1. **Positioning:** product recognition, core value, and 2-3 short supported advantages.
 2. **Use or ownership scene:** carrying, placing, organizing, operating, installing, combining, or belonging in the buyer's environment.
@@ -62,7 +62,7 @@ Use the common count tiers. For an eight-image default set, prefer:
 7. **Material, component, combination, care, or trust information:** confirmed information or visible proof.
 8. **Specification, package, selection, fit, compatibility, or final purchase decision:** new information, not a slogan recap or survey.
 
-Compress the same roles into six images for simple products. Expand structure proof, state changes, components, installation, comparison, scale, or decision support to ten images for complex products.
+For the six-image default, merge related structure, use, and proof modules without losing mandatory decision coverage. Expand to ten images only when further supported state changes, components, installation, comparison, scale, or decision support remain after a strong eight-page plan.
 
 ## 6. Scale And Human Relationship
 

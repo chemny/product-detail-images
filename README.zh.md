@@ -41,15 +41,17 @@ Skill 会先确认主商品与可用事实，再建立完整的商品成交叙�
 | 品类路由与适配 | 自动识别商品的主要决策类型；结构耐用品、包装消费品和数码电子会分别加载对应的结构、包装标签、感官表达、功能与证据规则 |
 | 完整页面规划 | 覆盖商品认知、核心价值、优势表达、证据、使用想象与购买决策 |
 | 稳定的图片数量规则 | 根据叙事深度与素材丰富度选择 6、8 或 10 张，避免随意变化 |
+| 平台与格式路由 | 在确定画布前区分商品图、详情模块、社交卡片、广告图和视频封面 |
 | 七种视觉方向 | 同时比较七种适配商品的视觉风格，并推荐一套统一方向 |
 | 逐页商业文案 | 每张图都有有效信息，不生成无字空图，也不在详情页里使用 CTA 按钮 |
 | 构图与排版控制 | 改变构图、景别、姿态、商品比例与文字层级，同时保持系列一致性 |
 | 背景重构 | 把原图当作商品证据，根据商品特点重新建立更合适的视觉世界 |
 | 生成后质检 | 检查商品一致性、人体、裁切、文字、事实、页面意义和整套节奏 |
+| 尺寸机械校验 | 检查原始比例和最终像素，避免拉伸商品或版式 |
 
 ## 平台兼容性
 
-已通过 Codex Skill 格式校验，并在 macOS 的 Codex 中完成测试。Skill 核心使用可移植的 Markdown 指令和相对路径；Claude Code、OpenClaw、Linux 与 Windows 已完成静态检查，但尚未进行真实运行测试。
+已通过 Codex Skill 格式校验，并在 macOS 的 Codex 中完成测试。Skill 核心使用可移植的 Markdown 指令和相对路径；Claude Code、OpenClaw、Linux 与 Windows 已完成静态检查；辅助脚本需要 Python 3.9 或更高版本，完整生图能力取决于宿主 Agent。
 
 完整生图需要宿主 Agent 提供图片生成工具。可选的结构化方案校验器需要 Python 3.9 或更高版本；Windows 使用 `py -3 scripts\validate_product_brief.py <brief.json>`，macOS 与 Linux 使用 `python3 scripts/validate_product_brief.py <brief.json>`。
 
@@ -99,7 +101,7 @@ Skill 会在正式生成前进行一次集中确认，不会把常规设计细�
 3. 建立完整成交叙事，选择最小但完整的 6、8 或 10 张页面骨架。
 4. 比较七种视觉风格，推荐一套方向，并规划每页的图文关系。
 5. 集中确认一次，再从头图开始分批生成。
-6. 检查单图交付质量与整套创意质量，只修改失败的维度。
+6. 检查原始比例和最终像素，再检查单图交付质量与整套创意质量，只修改失败的维度。
 
 ## 仓库结构
 
@@ -122,11 +124,13 @@ product-detail-images/
 │   ├── packaged-consumable-adapter.md
 │   ├── electronics-adapter.md
 │   ├── structured-durable-adapter.md
+│   ├── platform-format-routing.md
 │   ├── poster-sequence.md
 │   ├── style-packs.md
 │   └── ...
 └── scripts/
-    └── validate_product_brief.py
+    ├── validate_product_brief.py
+    └── validate_image_dimensions.py
 ```
 
 ## 使用要求
@@ -134,7 +138,7 @@ product-detail-images/
 - 能够加载本地 Skill 的 Agent 客户端
 - 用于最终出图的图片生成能力
 - 商品图片，或足够具体的商品描述
-- 仅在使用可选的结构化商品简报校验脚本时需要 Python 3
+- 使用可选的结构化商品简报或图片尺寸校验脚本时需要 Python 3.9 或更高版本
 
 不使用校验脚本也可以完成主要规划流程。最终图片生成能力与具体表现取决于当前 Agent 客户端。
 

@@ -38,14 +38,17 @@ Only a critical failure requires automatic revision. Log review-level difference
 
 Before handoff, verify mechanically:
 
+- every raw generated asset has been inspected before export and its width, height, and aspect ratio recorded;
+- the raw aspect ratio matches the approved ratio; a mismatch cannot be hidden by later changing only the file dimensions;
 - every approved asset exists in the declared output directory;
 - delivered count, numerical order, role, and section theme match the approved manifest;
 - filenames use stable numerical prefixes and do not silently overwrite another approved asset;
 - actual pixel width, height, and aspect ratio have been inspected and recorded;
 - any resize, crop, or padding preserves the product and approved composition without stretching;
+- any raster operation uses one uniform scale factor for both axes; independently forcing width and height to the target is prohibited when source and target ratios differ;
 - source files remain untouched unless the user explicitly requested an edit to them.
 
-A missing file, wrong count, or materially wrong delivery size blocks delivery but does not require regenerating a visually correct image when export correction can solve it.
+A missing file, wrong count, raw-ratio mismatch, materially wrong delivery size, or anisotropically stretched export blocks delivery. Run `scripts/validate_image_dimensions.py --stage raw --ratio <ratio> <raw-file>` after each generation and `scripts/validate_image_dimensions.py --stage final --ratio <ratio> --pixels <WxH> <final-files...>` before handoff.
 
 ## Gate 2: Creative Quality
 

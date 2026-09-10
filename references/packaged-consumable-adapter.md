@@ -74,7 +74,7 @@ If information is missing, state the gap once and let the user choose whether to
 
 ## Commerce Story Emphasis
 
-For the default eight-image set, use this category narrative:
+Start with the six-image default. When additional supported packaging, sensory, routine, variant, or trust dimensions justify an eight-image expanded set, use this category narrative:
 
 1. product recognition and positioning;
 2. consumption, use, or routine imagination;
@@ -85,7 +85,7 @@ For the default eight-image set, use this category narrative:
 7. trust information, usage guidance, warning, or decision reassurance;
 8. SKU, variant, net content, count, and package-decision summary.
 
-Compress the same decision path into six images by merging adjacent evidence modules. Expand to ten only when supplied information supports deeper proof, comparison, routine, variant, or specification content. Never add hollow pages to reach a count.
+For the six-image default, merge adjacent packaging, sensory, routine, and decision modules without losing mandatory coverage. Expand to ten only when supplied information still supports deeper proof, comparison, routine, variant, or specification content after a strong eight-page plan. Never add hollow pages to reach a count.
 
 ### Evidence Carriers By Subprofile
 

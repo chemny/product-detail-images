@@ -19,7 +19,7 @@ Before generation, return:
 11. **Delivery manifest:** requested platform, language, destination, and one row per image with order, role, commerce job, target dimensions or aspect ratio, and planned filename.
 12. **One confirmation question.**
 
-Automatic counts are 6, 8, or 10. Six is the minimum complete tier and eight is the default recommendation. Use four only when explicitly requested and label it as a compact showcase with compressed-content notes.
+Automatic counts are 6, 8, or 10. Six is the default complete tier. Expand to eight or ten only when the content matrix contains additional supported, non-mergeable dimensions beyond the smaller tier. Use four only when explicitly requested and label it as a compact showcase with compressed-content notes.
 
 Do not ask the user to approve count, background, typography, layout, and each page separately.
 
@@ -27,11 +27,16 @@ The seven-style table is a transparent recommendation surface, not a seven-step 
 
 For every page also record:
 
+- `primary_dimension`;
+- `supporting_dimension` when it deepens the same commerce job;
+- one `new_information` sentence that does not repeat an earlier page;
 - `headline_form`;
 - whether it is the `series_peak_page`, and its type: `visual_peak|evidence_peak|information_peak`;
 - what new information it adds beyond earlier pages.
 
 For eight- and ten-image sets, the plan is incomplete without a category-appropriate series peak. The final page is incomplete when its new-information field only repeats prior colors, occasions, or selling points.
+
+The consolidated plan must briefly state why the selected count did not stop at six. Background, pose, mood, synonymous copy, and repeated overall product views are invalid expansion reasons.
 
 ## Delivery Manifest
 
@@ -40,14 +45,14 @@ Create the manifest before generation and keep it aligned with the approved page
 - page id and numerical order;
 - asset type: `main`, `detail`, or `gallery` when the platform distinguishes them;
 - commerce job and section theme;
-- target width, height, and aspect ratio, or an explicit `platform_default` when exact pixels were not supplied;
+- target width, height, and aspect ratio, or an explicit `platform_default` when exact pixels were not supplied; for the generic ecommerce default, record both `3:4 portrait` and `750x1000 px`;
 - language;
 - input roles used as evidence or reference;
 - stable numbered filename and output directory.
 
-Dimension precedence is: user-specified per-image size, user-specified class size, supplied platform specification, then the skill's existing aspect-ratio default. Do not silently invent a current platform requirement.
+Read `platform-format-routing.md` before completing the manifest. Dimension precedence is: user-specified per-image size, user-specified asset-class size, current official platform specification for the named publishing surface, then the skill's asset-type default. Do not silently invent a current platform requirement or confuse a video-cover ratio with a product-image ratio.
 
-If generation does not return the requested pixels, resize, crop, or pad only when it preserves the approved composition and never stretch the product. Record the actual final dimensions after export.
+If generation does not return the requested ratio, regenerate that page once with the approved ratio and pixels repeated at the beginning and in the layout blueprint. If the retry still misses, resize, crop, pad, or extend the background only when it preserves the approved composition. Never stretch the product, model, text, or layout. Record raw dimensions, raw ratio, normalization method, and final dimensions after export.
 
 ## Page Plan
 
@@ -67,13 +72,14 @@ After confirmation, every page plan must contain:
 - scene mode and 2-3 recognizable scene cues when the copy names a concrete setting;
 - model action, expression, gaze, camera distance, and camera angle;
 - the intended visual difference from the previous and next page;
+- primary content dimension, related supporting dimension, and the new information added by the page;
 - subject state, camera distance, and subject position;
 - layout blueprint;
 - background variation inside the shared brand world.
 
 ## Production Prompt
 
-Every image prompt must preserve these fields:
+Every image prompt must preserve these fields. Begin field 1 with the approved canvas in both ratio and pixel form and repeat it in field 6. Default: `Canvas lock: 3:4 portrait; target 750x1000 px.`
 
 1. Page objective.
 2. Full visual scene and lighting.
@@ -93,6 +99,10 @@ For each output record:
 - file path;
 - role;
 - planned and actual dimensions;
+- approved ratio and target pixels;
+- raw generated dimensions and raw ratio;
+- normalization method: `none`, `uniform_resize`, `crop`, `pad`, or `background_extension`; never `stretch`;
+- final exported dimensions and final ratio;
 - status: `approved` or `needs_revision`;
 - concrete inspection note and issue severity when revision is needed.
 

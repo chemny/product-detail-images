@@ -2,7 +2,7 @@
 name: product-detail-images
 description: "Generate ecommerce product detail-page image sets from uploaded product images or product descriptions. Use when the user asks for ecommerce KV posters, marketplace detail images, visual selling-point analysis, section plans, production prompts, or generated product-detail image assets. This skill produces images only, not websites or code previews."
 metadata:
-  version: "1.5.0"
+  version: "1.5.3"
 ---
 
 # Product Detail Images
@@ -28,17 +28,22 @@ Create a coherent ecommerce image set through three layers: planning, creative g
 
 3. Build a complete commerce story, then select the count.
    - Read `references/poster-sequence.md`.
+   - Read `references/platform-format-routing.md` before resolving platform, asset type, aspect ratio, or pixel dimensions. Distinguish product-gallery images, modular detail sections, long detail images, social cards, and video covers; never present one format as a universal platform rule.
    - First define the core value, 1-3 advantage pillars, visible or supplied proof, usage imagination, and purchase-decision support.
-   - Automatically use only 6, 8, or 10 images. Six is the minimum complete detail-page set; eight is the default recommendation; ten is for richer products or longer decision paths.
-   - Choose the smallest tier that can express the complete commerce story without overcrowding or hollow repetition. Material richness controls evidence depth and may justify expansion; image clarity never determines count.
+   - Automatically use only 6, 8, or 10 images. Six is the default complete detail-page set. Expand to eight or ten only when additional supported, non-mergeable content dimensions remain after the smaller tier is fully planned.
+   - Draft the six-page story first. Expand to eight only when at least two additional supported dimensions add distinct purchase meaning; expand from eight to ten by the same rule. Mood changes, background changes, pose changes, synonymous copy, and repeated product views never justify expansion.
+   - Choose the smallest tier that can express the complete commerce story without overcrowding or hollow repetition. Increase page richness by combining related primary and supporting dimensions inside one coherent page before increasing the count. Material richness controls evidence depth and may justify expansion; image clarity never determines count.
    - A user-specified count overrides the automatic tier. If the user explicitly requests four images, treat it as a compact showcase rather than the default complete-detail-page format and explain which content must be compressed.
    - Resolve the requested platform, language, output directory, and per-image dimensions or aspect ratios before generation. Record them in a delivery manifest. Do not replace the 6/8/10 completeness logic with another skill's fixed main-image/detail-image count.
+   - Unless the user overrides the canvas, lock the generic ecommerce default in both forms: `3:4 portrait` and `750x1000 px`. Treat them as two expressions of one target, not two alternatives. If the user supplies a ratio, pixels, or both, use the user's canvas; when both are supplied they must agree before generation.
 
 4. Build the recommendation.
    - Read `references/content-dimension-system.md`, `references/style-packs.md`, and `references/background-system.md`.
    - Propose exactly five candidate selling points, then organize them into one core value, 1-3 advantage pillars, and supporting evidence instead of treating all five equally.
    - Always show all seven style packs with concise product-specific fit ratings. Mark one recommended style, one safe alternative, and optionally one contrasting alternative. The full library must remain visible, but the user only needs to confirm one direction rather than answer seven separate questions.
    - Use the stable page skeleton for the selected count, then apply the loaded category adapter's evidence emphasis, visual carriers, and decision modules. Replace only modules that are unsupported or clearly low-value.
+   - Build a content matrix before the sequence. For each available dimension record its evidence, customer meaning, visual carrier, and planned page. Cover recognition, form or structure, visible detail, use or motion, styling or scene, aesthetic or SKU expression, and purchase decision whenever supported.
+   - Give every page one primary dimension and normally one related supporting dimension. Keep a page only when it can state one sentence of new commerce information that earlier pages do not provide. Merge weak pages instead of filling the selected count.
    - Default background mode to `replace`: the source is product evidence, not an automatic environment template.
 
 5. Obtain one consolidated confirmation.
@@ -78,6 +83,7 @@ Create a coherent ecommerce image set through three layers: planning, creative g
    - Favor positive visual direction over prohibitions. Use negative constraints only for likely failures on that page.
    - Use exact or absolute preservation language only for clear, purchase-relevant identity features. Describe ambiguous source details positively and allow a plausible interpretation. Do not inherit a previous product's belt, hardware, accessory, logo, or styling failure as a constraint for a new product.
    - Carry only the relevant category-adapter anchors and likely material failures into each prompt. Do not paste a full adapter or generic category checklist into every image request.
+   - Start field 1 of every production prompt with a dual-expression canvas lock and repeat it in field 6. Default wording: `Canvas lock: 3:4 portrait; target 750x1000 px.` Use the corresponding ratio and pixels when the user selects another canvas. Natural-language canvas instructions guide generation but never replace mechanical validation.
 
 10. Generate images.
    - Use uploaded images as product references.
@@ -86,6 +92,9 @@ Create a coherent ecommerce image set through three layers: planning, creative g
    - Every final detail-page image must contain useful commerce copy. Do not deliver text-free pages.
    - Treat the approved visible copy as a closed list. Do not invite the image model to invent extra material, comfort, performance, efficacy, or user-experience statements. Additional descriptive text is allowed only when it was explicitly included in the approved page copy.
    - Do not use CTA or button-like elements in detail-page sections. CTA is allowed only for an explicitly separate header, campaign, or landing hero.
+   - After every generated page, inspect the raw file's width, height, and aspect ratio before generating the next page or batch. Run `scripts/validate_image_dimensions.py --stage raw --ratio <approved_ratio> <file>` when a local file is available.
+   - Treat a raw aspect-ratio mismatch as a critical delivery failure even when the composition looks good. Regenerate that page once with the canvas lock strengthened at the beginning and end of the prompt. If the retry still misses, use aspect-preserving crop, pad, or background extension only when it keeps all required product and text regions; otherwise stop and report the mismatch.
+   - Never map the source width and height independently onto the target canvas. A file that reaches the target pixels through anisotropic stretching is failed, not normalized.
 
 ## Layer 3: Post-Generation Quality Control
 
@@ -96,7 +105,7 @@ Create a coherent ecommerce image set through three layers: planning, creative g
    - Classify issues as critical, material-but-reviewable, or acceptable variation. Only critical issues trigger automatic regeneration.
    - Judge supporting props lightly. Ordinary changes in shoes, metal hardware, bags, jewelry, hair, or styling are acceptable unless they misrepresent the sold product, dominate it, become physically implausible, or show a clearly recognizable third-party brand mark.
    - Apply the loaded category adapter's purchase-relevant QA after the common checks. A category detail is critical only when it is visible or supplied and changes what the buyer believes the product is, includes, connects to, supports, or can do.
-   - Verify the delivery manifest: requested count and order, stable numbered filenames, file existence, actual pixel dimensions and aspect ratios, and output location. Do not report an asset as delivered until the file and dimensions have been checked.
+   - Verify the delivery manifest twice: first against every raw generated file's aspect ratio, then against every exported file's exact pixels and aspect ratio. Use `scripts/validate_image_dimensions.py --stage final --ratio <approved_ratio> --pixels <approved_pixels> <files...>` for final local assets. Do not report an asset as delivered until both checks pass.
 
 12. Revise only the failed dimension.
    - Identify the concrete failure and revise the corresponding prompt instruction.
@@ -118,8 +127,8 @@ Rule of thumb: creative mood may be proposed; objective facts must not be fabric
 Use `references/poster-sequence.md` as the source of truth:
 
 - Every complete set must cover product recognition, core value, advantage expression, proof, usage imagination, and purchase decision.
-- 6 images: minimum complete detail page.
-- 8 images: default complete sales narrative.
+- 6 images: default complete detail page.
+- 8 images: expanded sales narrative justified by additional supported dimensions.
 - 10 images: rich commercial narrative with deeper proof and decision support.
 - 4 images: user-requested compact showcase only; never an automatic complete-detail-page tier.
 
@@ -139,6 +148,8 @@ Send only these seven fields to image generation:
 
 Do not send workflow explanations, scoring rubrics, user-decision logic, evidence-status schemas, or generic safety essays to the image model.
 
+Field 1 must begin with the approved ratio and pixel target, and field 6 must repeat them. For the default canvas, use both `3:4 portrait` and `750x1000 px`.
+
 ## Resource Guide
 
 - `references/product-analysis-schema.md`: product recognition and evidence extraction.
@@ -147,6 +158,7 @@ Do not send workflow explanations, scoring rubrics, user-decision logic, evidenc
 - `references/packaged-consumable-adapter.md`: packaging identity, sensory evidence, label hierarchy, quantity, claims, prompts, and QA for consumables and packaged goods.
 - `references/electronics-adapter.md`: electronics-specific evidence, story, visual carriers, prompts, and QA.
 - `references/poster-sequence.md`: deterministic counts and stable page skeletons.
+- `references/platform-format-routing.md`: asset-type-first platform ratios, verified dimensions, precedence, and freshness rules.
 - `references/content-dimension-system.md`: selling points and optional replacement modules.
 - `references/style-packs.md`: seven visual directions.
 - `references/visual-style-system.md`: series-level visual identity.
@@ -158,6 +170,7 @@ Do not send workflow explanations, scoring rubrics, user-decision logic, evidenc
 - `references/output-contract.md`: concise planning and delivery format.
 - `references/generation-qa.md`: delivery and creative quality gates.
 - `scripts/validate_product_brief.py`: optional structured-brief validation.
+- `scripts/validate_image_dimensions.py`: mandatory raw-ratio and final-pixel validation for local generated assets.
 
 ## Final Delivery
 
